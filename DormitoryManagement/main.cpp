@@ -181,6 +181,7 @@ void information_entry() {
     printf("------------------------------------录 入-------------------------------------\n\n");
     entry_retype:
     stu = NEW_STUDENT();
+    stu->remarks[0] = '\0';
     printf("请录入学生信息（学院 班级 学号 姓名 性别）：\n");
     rewind(stdin);
     scanf("%s %s %d %s %s", stu->college, stu->sclass, &stu->number, stu->name, sex);
@@ -248,7 +249,7 @@ void information_modify() {
         }
     }
 
-    // 选择查询条件
+    // 选择条件
     printf("请选择：\n");
     printf("1.学院\n");
     printf("2.班级\n");
@@ -437,7 +438,7 @@ void information_query() {
                 found = current->student->sex == get_sex(condition);
                 break;
             case 6:
-                found = current->student->building == num;
+                found = current->student->building == condition[0];
                 break;
             case 7:
                 found = current->student->room == num;
@@ -698,6 +699,7 @@ bool is_number(const char *str) {
     return true;
 }
 
+/// 比较两个班级的大小
 int compare_class(const char *cls1, const char *cls2) {
     int grade1;
     int grade2;
