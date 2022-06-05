@@ -1,92 +1,92 @@
 #include "Definitions.h"
 
-/// ÏÔÊ¾ÏµÍ³Ö÷²Ëµ¥
+/// æ˜¾ç¤ºç³»ç»Ÿä¸»èœå•
 void ShowMenu();
 
-/// °´ÈÎÒâ¼ü¼ÌĞø
+/// æŒ‰ä»»æ„é”®ç»§ç»­
 void WaitContinue();
 
-/// Ö÷º¯Êı
+/// ä¸»å‡½æ•°
 int main() {
     int choice;
-    setbuf(stdout, 0);      // Çå¿ÕÊä³ö»º³åÇø
+    setbuf(stdout, 0);      // æ¸…ç©ºè¾“å‡ºç¼“å†²åŒº
 
-    Manage_Login();     // ÓÃ»§µÇÂ¼
+    Manage_Login();     // ç”¨æˆ·ç™»å½•
 
     do {
-        ShowMenu();         // Ö÷²Ëµ¥
+        ShowMenu();         // ä¸»èœå•
         printf("->");
         scanf("%d", &choice);
         CUTTING_LINE();
         switch (choice) {
             case 1:
-                Manage_Input();         // ĞÂÔö×¡»§
+                Manage_Input();         // æ–°å¢ä½æˆ·
                 WaitContinue();
                 break;
             case 2:
-                Manage_Delete();        // É¾³ı×¡»§
+                Manage_Delete();        // åˆ é™¤ä½æˆ·
                 WaitContinue();
                 break;
             case 3:
-                Manage_Modify();        // ĞŞ¸Ä×¡»§
+                Manage_Modify();        // ä¿®æ”¹ä½æˆ·
                 WaitContinue();
                 break;
             case 4:
-                Manage_Search();        // ²éÑ¯×¡»§
+                Manage_Search();        // æŸ¥è¯¢ä½æˆ·
                 WaitContinue();
                 break;
             case 5:
-                Manage_Sort();         //°´Â¥ºÅÅÅĞò
+                Manage_Sort();         //æŒ‰æ¥¼å·æ’åº
                 WaitContinue();
                 break;
             case 6:
-                Manage_Browsing();      // ä¯ÀÀËùÓĞ×¡»§
+                Manage_Browsing();      // æµè§ˆæ‰€æœ‰ä½æˆ·
                 WaitContinue();
                 break;
             case 7:
-                Manage_AutoGenPayment();        // ×Ô¶¯Éú³ÉÎïÒµ·Ñ
+                Manage_AutoGenPayment();        // è‡ªåŠ¨ç”Ÿæˆç‰©ä¸šè´¹
                 WaitContinue();
                 break;
             case 8:
-                Manage_Payment();       // »§Ö÷½É·Ñ
+                Manage_Payment();       // æˆ·ä¸»ç¼´è´¹
                 WaitContinue();
                 break;
             case 9:
-                Manage_Statistic();     // Í³¼ÆÎ´½É·Ñ»§Ö÷
+                Manage_Statistic();     // ç»Ÿè®¡æœªç¼´è´¹æˆ·ä¸»
                 WaitContinue();
                 break;
             case 0:
-                printf("ÏµÍ³¼´½«ÍË³ö£¬¸ĞĞ»ÄúµÄÊ¹ÓÃ£¡\n");
+                printf("ç³»ç»Ÿå³å°†é€€å‡ºï¼Œæ„Ÿè°¢æ‚¨çš„ä½¿ç”¨ï¼\n");
                 break;
             default:
-                printf("Ö¸ÁîÒì³££¡\n");
+                printf("æŒ‡ä»¤å¼‚å¸¸ï¼\n");
                 break;
         }
     } while (choice);
     return 0;
 }
 
-/// °´ÈÎÒâ¼ü¼ÌĞø
+/// æŒ‰ä»»æ„é”®ç»§ç»­
 void WaitContinue() {
-    printf("°´ÈÎÒâ¼ü¼ÌĞø...");
+    printf("æŒ‰ä»»æ„é”®ç»§ç»­...");
     _getch();
 }
 
-/// Ö÷²Ëµ¥
+/// ä¸»èœå•
 void ShowMenu() {
-    system("clear");
+    system("cls");
     putchar('\n');
     CUTTING_LINE();
-    printf("                                    Éç Çø Îï Òµ ·Ñ ¹Ü Àí Ïµ Í³\n\n");
-    printf("                                        1.Ìí¼ÓĞÂ×¡»§ĞÅÏ¢\n");
-    printf("                                        2.É¾³ı×¡»§ĞÅÏ¢\n");
-    printf("                                        3.ĞŞ¸Ä×¡»§ĞÅÏ¢\n");
-    printf("                                        4.²éÑ¯×¡»§ĞÅÏ¢\n");
-    printf("                                        5.ÅÅĞòºóä¯ÀÀ\n");
-    printf("                                        6.ä¯ÀÀÈ«²¿×¡»§ĞÅÏ¢\n");
-    printf("                                        7.×Ô¶¯Éú³ÉÎïÒµ·Ñ\n");
-    printf("                                        8.»§Ö÷½É·Ñ\n");
-    printf("                                        9.°´Â¥ºÅÍ³¼Æ\n");
-    printf("                                        0.ÍË³öÏµÍ³\n");
+    printf("                                    ç¤¾ åŒº ç‰© ä¸š è´¹ ç®¡ ç† ç³» ç»Ÿ\n\n");
+    printf("                                        1.æ·»åŠ æ–°ä½æˆ·ä¿¡æ¯\n");
+    printf("                                        2.åˆ é™¤ä½æˆ·ä¿¡æ¯\n");
+    printf("                                        3.ä¿®æ”¹ä½æˆ·ä¿¡æ¯\n");
+    printf("                                        4.æŸ¥è¯¢ä½æˆ·ä¿¡æ¯\n");
+    printf("                                        5.æ’åºåæµè§ˆ\n");
+    printf("                                        6.æµè§ˆå…¨éƒ¨ä½æˆ·ä¿¡æ¯\n");
+    printf("                                        7.è‡ªåŠ¨ç”Ÿæˆç‰©ä¸šè´¹\n");
+    printf("                                        8.æˆ·ä¸»ç¼´è´¹\n");
+    printf("                                        9.æŒ‰æ¥¼å·ç»Ÿè®¡\n");
+    printf("                                        0.é€€å‡ºç³»ç»Ÿ\n");
     CUTTING_LINE();
 }
