@@ -1,120 +1,120 @@
 #include "Definitions.h"
 
 
-/// ÓÃ»§µÇÂ¼
+/// ç”¨æˆ·ç™»å½•
 void Manage_Login() {
     int flag = 0, i = 0;
     char user[10], pwd[10];
     do {
-        system("clear");
-        i++;        // µÇÂ¼´ÎÊı
-        printf("\n----------------------------------------ÓÃ »§ µÇ Â¼----------------------------------------\n");
-        printf("                                    ÊäÈëÓÃ»§Ãû£º");
+        system("cls");
+        i++;        // ç™»å½•æ¬¡æ•°
+        printf("\n----------------------------------------ç”¨ æˆ· ç™» å½•----------------------------------------\n");
+        printf("                                    è¾“å…¥ç”¨æˆ·åï¼š");
         scanf("%s", user);
-        printf("                                    ÊäÈëÃÜÂë£º");
+        printf("                                    è¾“å…¥å¯†ç ï¼š");
         scanf("%s", pwd);
         if (strcmp(user, LOGIN_USER) == 0 && strcmp(pwd, LOGIN_PWD) == 0) {
             flag = 1;
             break;
         }
-        printf("ÓÃ»§Ãû»òÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë¡£\n");
+        printf("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n");
         _getch();
     } while (i < 3);
 
     if (!flag) {
-        printf("Èı´ÎÃÜÂëÊäÈë¾ù´íÎó£¬ÏµÍ³¼´½«ÍË³ö\n");
+        printf("ä¸‰æ¬¡å¯†ç è¾“å…¥å‡é”™è¯¯ï¼Œç³»ç»Ÿå³å°†é€€å‡º\n");
         exit(0);
     }
     CUTTING_LINE();
 }
 
-/// ĞÂÔö×¡»§
+/// æ–°å¢ä½æˆ·
 void Manage_Input() {
     Household *data;
     struct LinkedList list;
     char name[32];
     char other_name[32];
 
-    LinkedList_ReadFile(&list);         // ¶ÁÈ¡ÎÄ¼şÖÁÁ´±í
+    LinkedList_ReadFile(&list);         // è¯»å–æ–‡ä»¶è‡³é“¾è¡¨
 
-    printf("ÇëÊäÈë\n");
-    printf("»§Ö÷ĞÕÃû£º");
+    printf("è¯·è¾“å…¥\n");
+    printf("æˆ·ä¸»å§“åï¼š");
     scanf("%s", name);
 
-    if (LinkedList_SearchName(list, name)) {        // ²éÑ¯Á´±íÖĞÊÇ·ñ´æÔÚ¸Ã»§Ö÷ĞÕÃû
-        LinkedList_Destroy(&list);                  //ÊÍ·ÅÁ´±í
-        printf("ĞÂÔöÊ§°Ü£¬¸Ã»§Ö÷ĞÅÏ¢ÒÑ´æÔÚ£¡\n");
+    if (LinkedList_SearchName(list, name)) {        // æŸ¥è¯¢é“¾è¡¨ä¸­æ˜¯å¦å­˜åœ¨è¯¥æˆ·ä¸»å§“å
+        LinkedList_Destroy(&list);                  //é‡Šæ”¾é“¾è¡¨
+        printf("æ–°å¢å¤±è´¥ï¼Œè¯¥æˆ·ä¸»ä¿¡æ¯å·²å­˜åœ¨ï¼\n");
         return;
     }
 
     data = (Household *) malloc(sizeof(Household));
     strcpy(data->name, name);
 
-    printf("»§Ö÷Éí·İÖ¤£º");
+    printf("æˆ·ä¸»èº«ä»½è¯ï¼š");
     scanf("%s", data->idcard);
-    printf("ĞÔ±ğ£º");
+    printf("æ€§åˆ«ï¼š");
     scanf("%s", data->gender);
-    printf("ÁªÏµµç»°£º");
+    printf("è”ç³»ç”µè¯ï¼š");
     scanf("%s", data->phone);
-    printf("Â¥ºÅ£º");
+    printf("æ¥¼å·ï¼š");
     scanf("%s", data->building);
-    printf("µ¥ÔªºÅ£º");
+    printf("å•å…ƒå·ï¼š");
     scanf("%s", data->unit);
-    printf("·¿ºÅ£º");
+    printf("æˆ¿å·ï¼š");
     scanf("%s", data->room);
-    printf("Ãæ»ı£¨Æ½·½Ã×£©£º");
+    printf("é¢ç§¯ï¼ˆå¹³æ–¹ç±³ï¼‰ï¼š");
     scanf("%f", &data->area);
-    printf("Ã¿Æ½·½ÎïÒµµÄ¼Û¸ñ£º");
+    printf("æ¯å¹³æ–¹ç‰©ä¸šçš„ä»·æ ¼ï¼š");
     scanf("%f", &data->price);
-    printf("Ó¦½ÉÎïÒµ·Ñ£º");
+    printf("åº”ç¼´ç‰©ä¸šè´¹ï¼š");
     scanf("%f", &data->payment);
-    printf("±¸×¢£º");
+    printf("å¤‡æ³¨ï¼š");
     scanf("%s", data->remark);
 
-    printf("ÇëÊäÈë»§Ö÷Ãû£¬ĞÂÔö×¡»§²åÈë¸Ã×¡»§Ö®ºó£º");
+    printf("è¯·è¾“å…¥æˆ·ä¸»åï¼Œæ–°å¢ä½æˆ·æ’å…¥è¯¥ä½æˆ·ä¹‹åï¼š");
     scanf("%s", other_name);
     Node *other_node = LinkedList_SearchName(list, other_name);
     if (other_node != NULL) {
-        Node *new_node = (Node *) malloc(sizeof(Node));     // ´´½¨ĞÂµÄÁ´±í½áµã
+        Node *new_node = (Node *) malloc(sizeof(Node));     // åˆ›å»ºæ–°çš„é“¾è¡¨ç»“ç‚¹
         new_node->data = data;
         new_node->next = other_node->next;
         other_node->next = new_node;
         list.size++;
     } else {
-        LinkedList_Insert(&list, data);     // ĞÂÔöÊı¾İ²åÈëÁ´±í
+        LinkedList_Insert(&list, data);     // æ–°å¢æ•°æ®æ’å…¥é“¾è¡¨
     }
 
-    LinkedList_WriteFile(&list);        // ±£´æÁ´±íÊı¾İÖÁÎÄ¼ş
-    LinkedList_Destroy(&list);          // ÊÍ·ÅÁ´±í
-    printf("ĞÂÔö³É¹¦£¡\n");
+    LinkedList_WriteFile(&list);        // ä¿å­˜é“¾è¡¨æ•°æ®è‡³æ–‡ä»¶
+    LinkedList_Destroy(&list);          // é‡Šæ”¾é“¾è¡¨
+    printf("æ–°å¢æˆåŠŸï¼\n");
 }
 
-/// ×¡»§ĞÅÏ¢ĞŞ¸Ä¸¨Öúº¯Êı
+/// ä½æˆ·ä¿¡æ¯ä¿®æ”¹è¾…åŠ©å‡½æ•°
 int Manage_Modify_Aux(struct LinkedList list, Node **node) {
     char name[32];
     int choice;
-    printf("ÇëÑ¡ÔñĞŞ¸ÄÌõ¼ş£º\n");
-    printf(" 1.»§Ö÷ĞÕÃû\n");
-    printf(" 2.»§Ö÷Éí·İÖ¤\n");
-    printf(" 3.ĞÔ±ğ\n");
-    printf(" 4.ÁªÏµµç»°\n");
-    printf(" 5.Â¥ºÅ\n");
-    printf(" 6.µ¥ÔªºÅ\n");
-    printf(" 7.·¿ºÅ\n");
-    printf(" 8.Ãæ»ı\n");
-    printf(" 9.Ã¿Æ½·½ÎïÒµµÄ¼Û¸ñ\n");
-    printf(" 10.Ó¦½ÉÎïÒµ·Ñ\n");
-    printf(" 11.±¸×¢\n");
-    printf(" 0.·µ»Ø\n");
+    printf("è¯·é€‰æ‹©ä¿®æ”¹æ¡ä»¶ï¼š\n");
+    printf(" 1.æˆ·ä¸»å§“å\n");
+    printf(" 2.æˆ·ä¸»èº«ä»½è¯\n");
+    printf(" 3.æ€§åˆ«\n");
+    printf(" 4.è”ç³»ç”µè¯\n");
+    printf(" 5.æ¥¼å·\n");
+    printf(" 6.å•å…ƒå·\n");
+    printf(" 7.æˆ¿å·\n");
+    printf(" 8.é¢ç§¯\n");
+    printf(" 9.æ¯å¹³æ–¹ç‰©ä¸šçš„ä»·æ ¼\n");
+    printf(" 10.åº”ç¼´ç‰©ä¸šè´¹\n");
+    printf(" 11.å¤‡æ³¨\n");
+    printf(" 0.è¿”å›\n");
 
     scanf("%d", &choice);
-    printf("ÇëÊäÈëĞŞ¸ÄÖµ£º");
+    printf("è¯·è¾“å…¥ä¿®æ”¹å€¼ï¼š");
     switch (choice) {
         case 1:
             scanf("%s", name);
 
-            if (LinkedList_SearchName(list, name)) {        // ÑéÖ¤ĞŞ¸ÄºóµÄ»§Ö÷ÊÇ·ñ´æÔÚ£¬±£Ö¤»§Ö÷ĞÕÃûÎ¨Ò»
-                printf("ĞŞ¸ÄÊ§°Ü£¬¸Ã»§Ö÷ĞÕÃûÒÑ´æÔÚ£¡\n");
+            if (LinkedList_SearchName(list, name)) {        // éªŒè¯ä¿®æ”¹åçš„æˆ·ä¸»æ˜¯å¦å­˜åœ¨ï¼Œä¿è¯æˆ·ä¸»å§“åå”¯ä¸€
+                printf("ä¿®æ”¹å¤±è´¥ï¼Œè¯¥æˆ·ä¸»å§“åå·²å­˜åœ¨ï¼\n");
                 return 0;
             }
             strcpy((*node)->data->name, name);
@@ -155,196 +155,196 @@ int Manage_Modify_Aux(struct LinkedList list, Node **node) {
     return 1;
 }
 
-/// ĞŞ¸Ä×¡»§ĞÅÏ¢
+/// ä¿®æ”¹ä½æˆ·ä¿¡æ¯
 void Manage_Modify() {
 
     char name[32];
     Node *node;
     struct LinkedList list;
 
-    LinkedList_ReadFile(&list);         // ¶ÁÈ¡ÎÄ¼şÖĞµÄÊı¾İÖÁÁ´±í
+    LinkedList_ReadFile(&list);         // è¯»å–æ–‡ä»¶ä¸­çš„æ•°æ®è‡³é“¾è¡¨
 
-    printf("ÇëÊäÈëĞèÒªĞŞ¸ÄµÄ»§Ö÷ĞÕÃû£º");
+    printf("è¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„æˆ·ä¸»å§“åï¼š");
     scanf("%s", name);
 
-    node = LinkedList_SearchName(list, name);       // ¸ù¾İ»§Ö÷ĞÕÃû²éÑ¯Á´±í½áµã
+    node = LinkedList_SearchName(list, name);       // æ ¹æ®æˆ·ä¸»å§“åæŸ¥è¯¢é“¾è¡¨ç»“ç‚¹
     if (node == NULL) {
-        printf("ÎŞ·¨ĞŞ¸Ä£¬²»´æÔÚ¸Ã»§Ö÷ĞÅÏ¢£¡\n");
+        printf("æ— æ³•ä¿®æ”¹ï¼Œä¸å­˜åœ¨è¯¥æˆ·ä¸»ä¿¡æ¯ï¼\n");
     } else {
-        if (Manage_Modify_Aux(list, &node))      // ĞŞ¸Ä½áµãĞÅÏ¢
+        if (Manage_Modify_Aux(list, &node))      // ä¿®æ”¹ç»“ç‚¹ä¿¡æ¯
         {
-            LinkedList_WriteFile(&list);        // ±£´æÁ´±íÊı¾İÖÁÎÄ¼ş
-            printf("ĞŞ¸Ä³É¹¦£¡\n");
+            LinkedList_WriteFile(&list);        // ä¿å­˜é“¾è¡¨æ•°æ®è‡³æ–‡ä»¶
+            printf("ä¿®æ”¹æˆåŠŸï¼\n");
         }
     }
 
-    LinkedList_Destroy(&list);      // ÊÍ·ÅÁ´±í
+    LinkedList_Destroy(&list);      // é‡Šæ”¾é“¾è¡¨
 }
 
-/// É¾³ı×¡»§ĞÅÏ¢
+/// åˆ é™¤ä½æˆ·ä¿¡æ¯
 void Manage_Delete() {
     char name[32];
-    printf("ÇëÊäÈë´ıÉ¾³ı»§Ö÷µÄĞÕÃû£º");
+    printf("è¯·è¾“å…¥å¾…åˆ é™¤æˆ·ä¸»çš„å§“åï¼š");
     scanf("%s", name);
 
     struct LinkedList list;
-    LinkedList_ReadFile(&list);         // ¶ÁÈ¡ÎÄ¼şÖĞµÄÊı¾İÖÁÁ´±í
+    LinkedList_ReadFile(&list);         // è¯»å–æ–‡ä»¶ä¸­çš„æ•°æ®è‡³é“¾è¡¨
 
-    if (LinkedList_Remove(&list, name)) {       // ¸ù¾İ»§Ö÷ĞÕÃûÉ¾³ıÁ´±í½áµã
-        LinkedList_WriteFile(&list);        // É¾³ı³É¹¦±£´æÎÄ¼ş
-        printf("É¾³ı³É¹¦£¡\n");
+    if (LinkedList_Remove(&list, name)) {       // æ ¹æ®æˆ·ä¸»å§“ååˆ é™¤é“¾è¡¨ç»“ç‚¹
+        LinkedList_WriteFile(&list);        // åˆ é™¤æˆåŠŸä¿å­˜æ–‡ä»¶
+        printf("åˆ é™¤æˆåŠŸï¼\n");
     } else {
-        printf("É¾³ıÊ§°Ü£¬²»´æÔÚ¸Ã»§Ö÷ĞÅÏ¢£¡\n");
+        printf("åˆ é™¤å¤±è´¥ï¼Œä¸å­˜åœ¨è¯¥æˆ·ä¸»ä¿¡æ¯ï¼\n");
     }
 
-    LinkedList_Destroy(&list);      // Ïú»ÙÁ´±í
+    LinkedList_Destroy(&list);      // é”€æ¯é“¾è¡¨
 }
 
-/// ä¯ÀÀÈ«²¿×¡»§ĞÅÏ¢
+/// æµè§ˆå…¨éƒ¨ä½æˆ·ä¿¡æ¯
 void Manage_Browsing() {
     Household data;
     FILE *fp;
     int size, i;
-    fp = fopen(DATA_FILE_NAME, "r");        // Ö»¶Á·½Ê½´ò¿ªÎÄ¼ş
+    fp = fopen(DATA_FILE_NAME, "r");        // åªè¯»æ–¹å¼æ‰“å¼€æ–‡ä»¶
     if (fp == NULL) {
-        printf("ä¯ÀÀÊ§°Ü£¬Êı¾İÎÄ¼ş²»´æÔÚ£¡\n");
+        printf("æµè§ˆå¤±è´¥ï¼Œæ•°æ®æ–‡ä»¶ä¸å­˜åœ¨ï¼\n");
         return;
     }
 
-    fscanf(fp, "%d\n", &size);        // ¶ÁÈ¡µÚÒ»ĞĞµÄÔªËØ¸öÊı
+    fscanf(fp, "%d\n", &size);        // è¯»å–ç¬¬ä¸€è¡Œçš„å…ƒç´ ä¸ªæ•°
     Household_Header();
     for (i = 0; i < size; i++) {
-        Household_ReadFile(fp, &data);       // ½«ÎÄ¼şÖĞµÄÒ»ĞĞĞÅÏ¢¶ÁÈ¡µ½Êı¾İ½á¹¹Ìå
-        Household_Print(data);                     // ÏÔÊ¾Ã¿Ò»¸ö×¡»§ĞÅÏ¢
+        Household_ReadFile(fp, &data);       // å°†æ–‡ä»¶ä¸­çš„ä¸€è¡Œä¿¡æ¯è¯»å–åˆ°æ•°æ®ç»“æ„ä½“
+        Household_Print(data);                     // æ˜¾ç¤ºæ¯ä¸€ä¸ªä½æˆ·ä¿¡æ¯
     }
-    fclose(fp);         // ¹Ø±ÕÎÄ¼şÖ¸Õë
+    fclose(fp);         // å…³é—­æ–‡ä»¶æŒ‡é’ˆ
 }
 
-/// ²éÑ¯×¡»§ĞÅÏ¢
+/// æŸ¥è¯¢ä½æˆ·ä¿¡æ¯
 void Manage_Search() {
     int i, size;
     FILE *fp;
     Household data;
     char name[32], building[10], unit[10], room[10];
 
-    printf("ÇëÑ¡Ôñ²éÑ¯·½Ê½£º\n");
-    printf(" 1.»§Ö÷ĞÕÃû\n");
-    printf(" 2.Â¥ºÅ+µ¥ÔªºÅ+·¿ºÅ\n");
+    printf("è¯·é€‰æ‹©æŸ¥è¯¢æ–¹å¼ï¼š\n");
+    printf(" 1.æˆ·ä¸»å§“å\n");
+    printf(" 2.æ¥¼å·+å•å…ƒå·+æˆ¿å·\n");
     scanf("%d", &i);
     if (i != 1 && i != 2) {
         return;
     }
 
-    fp = fopen(DATA_FILE_NAME, "r");        // Ö»¶Á·½Ê½´ò¿ªÎÄ¼ş
+    fp = fopen(DATA_FILE_NAME, "r");        // åªè¯»æ–¹å¼æ‰“å¼€æ–‡ä»¶
     if (fp == NULL) {
-        printf("ä¯ÀÀÊ§°Ü£¬Êı¾İÎÄ¼ş²»´æÔÚ£¡\n");
+        printf("æµè§ˆå¤±è´¥ï¼Œæ•°æ®æ–‡ä»¶ä¸å­˜åœ¨ï¼\n");
         return;
     }
 
-    fscanf(fp, "%d\n", &size);        // ¶ÁÈ¡µÚÒ»ĞĞµÄÔªËØ¸öÊı
+    fscanf(fp, "%d\n", &size);        // è¯»å–ç¬¬ä¸€è¡Œçš„å…ƒç´ ä¸ªæ•°
 
     if (i == 1) {
-        printf("»§Ö÷ĞÕÃû£º");
+        printf("æˆ·ä¸»å§“åï¼š");
         scanf("%s", name);
     } else if (i == 2) {
-        printf("Â¥ºÅ£º");
+        printf("æ¥¼å·ï¼š");
         scanf("%s", building);
-        printf("µ¥ÔªºÅ£º");
+        printf("å•å…ƒå·ï¼š");
         scanf("%s", unit);
-        printf("·¿ºÅ£º");
-        scanf("%s", room);   // ¸ù¾İ[Â¥ºÅ+µ¥ÔªºÅ+·¿ºÅ]²éÑ¯Êı×é
+        printf("æˆ¿å·ï¼š");
+        scanf("%s", room);   // æ ¹æ®[æ¥¼å·+å•å…ƒå·+æˆ¿å·]æŸ¥è¯¢æ•°ç»„
     }
     Household_Header();
     for (int j = 0; j < size; j++) {
-        Household_ReadFile(fp, &data);                  // ½«ÎÄ¼şÖĞµÄÒ»ĞĞĞÅÏ¢¶ÁÈ¡µ½Êı¾İ½á¹¹Ìå
+        Household_ReadFile(fp, &data);                  // å°†æ–‡ä»¶ä¸­çš„ä¸€è¡Œä¿¡æ¯è¯»å–åˆ°æ•°æ®ç»“æ„ä½“
         if (i == 1 && strcmp(data.name, name) == 0) {
-            Household_Print(data);                          // ´òÓ¡ÏÔÊ¾Ã¿Ò»¸ö×¡»§ĞÅÏ¢
+            Household_Print(data);                          // æ‰“å°æ˜¾ç¤ºæ¯ä¸€ä¸ªä½æˆ·ä¿¡æ¯
         }
         if (i == 2 && strcmp(data.building, building) == 0 &&
             strcmp(data.unit, unit) == 0 &&
             strcmp(data.room, room) == 0) {
-            Household_Print(data);                     // ´òÓ¡ÏÔÊ¾Ã¿Ò»¸ö×¡»§ĞÅÏ¢
+            Household_Print(data);                     // æ‰“å°æ˜¾ç¤ºæ¯ä¸€ä¸ªä½æˆ·ä¿¡æ¯
         }
     }
-    fclose(fp);         // ¹Ø±ÕÎÄ¼şÖ¸Õë
+    fclose(fp);         // å…³é—­æ–‡ä»¶æŒ‡é’ˆ
 }
 
-/// ×Ô¶¯Éú³ÉÎïÒµ·Ñ
+/// è‡ªåŠ¨ç”Ÿæˆç‰©ä¸šè´¹
 void Manage_AutoGenPayment() {
     Node *node;
     struct LinkedList list;
-    LinkedList_ReadFile(&list);     // ¶ÁÈ¡Êı¾İÖÁÁ´±í
+    LinkedList_ReadFile(&list);     // è¯»å–æ•°æ®è‡³é“¾è¡¨
 
     for (node = list.head; node; node = node->next) {
-        node->data->payment += node->data->area * node->data->price;        // ×Ô¶¯Éú³ÉÎïÒµ·Ñ
+        node->data->payment += node->data->area * node->data->price;        // è‡ªåŠ¨ç”Ÿæˆç‰©ä¸šè´¹
     }
 
-    LinkedList_WriteFile(&list);        // ±£´æÁ´±íÊı¾İÖÁÎÄ¼ş
-    LinkedList_Destroy(&list);          // ÊÍ·ÅÁ´±í
-    printf("ÎïÒµ·ÑÉú³É³É¹¦£¡\n");
+    LinkedList_WriteFile(&list);        // ä¿å­˜é“¾è¡¨æ•°æ®è‡³æ–‡ä»¶
+    LinkedList_Destroy(&list);          // é‡Šæ”¾é“¾è¡¨
+    printf("ç‰©ä¸šè´¹ç”ŸæˆæˆåŠŸï¼\n");
 }
 
-/// ÅÅĞò
+/// æ’åº
 void Manage_Sort() {
     int i;
     struct Array array;
-    Array_ReadFile(&array);            //ÎÄ¼şĞ´ÈëÊı×é
-    Array_SortBuilding(&array);        //ÅÅĞò
-    Household_Header();                //±íÍ·
+    Array_ReadFile(&array);            //æ–‡ä»¶å†™å…¥æ•°ç»„
+    Array_SortBuilding(&array);        //æ’åº
+    Household_Header();                //è¡¨å¤´
     for (i = 0; i < array.size; i++) {
-        Household_Print(array.data[i]);   //Êı¾İÏÔÊ¾
+        Household_Print(array.data[i]);   //æ•°æ®æ˜¾ç¤º
     }
 
 }
 
-/// ×¡»§½É·Ñ
+/// ä½æˆ·ç¼´è´¹
 void Manage_Payment() {
     float fee;
     char name[32];
     int pos;
     struct Array array;
 
-    printf("ÇëÊäÈë»§Ö÷ĞÕÃû£º");
+    printf("è¯·è¾“å…¥æˆ·ä¸»å§“åï¼š");
     scanf("%s", name);
-    Array_ReadFile(&array);     // ¶ÁÈ¡ÎÄ¼şÊı¾İÖÁÊı×é
+    Array_ReadFile(&array);     // è¯»å–æ–‡ä»¶æ•°æ®è‡³æ•°ç»„
 
-    pos = Array_SearchName(array, name);        // ¸ù¾İ»§Ö÷ĞÕÃû²éÑ¯Êı×é
+    pos = Array_SearchName(array, name);        // æ ¹æ®æˆ·ä¸»å§“åæŸ¥è¯¢æ•°ç»„
 
     if (pos < 0) {
-        printf("½É·ÑÊ§°Ü£¬²»´æÔÚ¸Ã×¡»§ĞÅÏ¢£¡\n");
+        printf("ç¼´è´¹å¤±è´¥ï¼Œä¸å­˜åœ¨è¯¥ä½æˆ·ä¿¡æ¯ï¼\n");
     } else if (array.data[pos].payment <= 0) {
-        printf("¸Ã×¡»§ÒÑ½ÉÇåÎïÒµ·Ñ£¬ÎŞ·¨ÖØĞÂ½É·Ñ£¡\n");
+        printf("è¯¥ä½æˆ·å·²ç¼´æ¸…ç‰©ä¸šè´¹ï¼Œæ— æ³•é‡æ–°ç¼´è´¹ï¼\n");
     } else {
-        printf("¸Ã×¡»§Î´½ÉÄÉÎïÒµ·Ñ£º%.2f\n", array.data[pos].payment);
-        printf("ÇëÊäÈë½É·Ñ¶î£º");
+        printf("è¯¥ä½æˆ·æœªç¼´çº³ç‰©ä¸šè´¹ï¼š%.2f\n", array.data[pos].payment);
+        printf("è¯·è¾“å…¥ç¼´è´¹é¢ï¼š");
         scanf("%f", &fee);
 
         if (fee > 0 && fee <= array.data[pos].payment) {
-            array.data[pos].payment -= fee;              // ½É·Ñ
-            Array_WriteFile(&array);                // ±£´æÊı×éÊı¾İÖÁÎÄ¼ş
-            printf("½É·Ñ³É¹¦£¡\n");
+            array.data[pos].payment -= fee;              // ç¼´è´¹
+            Array_WriteFile(&array);                // ä¿å­˜æ•°ç»„æ•°æ®è‡³æ–‡ä»¶
+            printf("ç¼´è´¹æˆåŠŸï¼\n");
         } else {
-            printf("½É·ÑÊ§°Ü£¬ÄúÊäÈëµÄ½É·Ñ¶îÒì³££¡\n");
+            printf("ç¼´è´¹å¤±è´¥ï¼Œæ‚¨è¾“å…¥çš„ç¼´è´¹é¢å¼‚å¸¸ï¼\n");
         }
     }
 
 }
 
-/// Í³¼ÆÎ´½É·Ñ×¡»§ĞÅÏ¢
+/// ç»Ÿè®¡æœªç¼´è´¹ä½æˆ·ä¿¡æ¯
 void Manage_Statistic() {
     struct Array array;
     int i, j, k, count;
 
-    Array_ReadFile(&array);     // ¶ÁÈ¡ÎÄ¼şÊı¾İÖÁÊı×é
+    Array_ReadFile(&array);     // è¯»å–æ–‡ä»¶æ•°æ®è‡³æ•°ç»„
 
-    Array_SortBuilding(&array);     // ¸ù¾İÂ¥ºÅÅÅĞò
+    Array_SortBuilding(&array);     // æ ¹æ®æ¥¼å·æ’åº
 
     for (i = 0; i < array.size; i++) {
         if (array.data[i].payment <= 0) {
             continue;
         }
 
-        count = 0;      // ²éÕÒÒ»±é£¬¸ÃÂ¥ºÅÊÇ·ñ´æÔÚÎ´½É·Ñ×¡»§
+        count = 0;      // æŸ¥æ‰¾ä¸€éï¼Œè¯¥æ¥¼å·æ˜¯å¦å­˜åœ¨æœªç¼´è´¹ä½æˆ·
         for (j = 0; j < array.size; j++) {
             if (array.data[j].payment > 0 &&
                 strcmp(array.data[j].building, array.data[i].building) == 0) {
@@ -352,17 +352,17 @@ void Manage_Statistic() {
             }
         }
 
-        if (count == 0) {       // ¸ÃÂ¥ºÅÏÂ×¡»§È«²¿½É·Ñ
+        if (count == 0) {       // è¯¥æ¥¼å·ä¸‹ä½æˆ·å…¨éƒ¨ç¼´è´¹
             continue;
         }
 
-        printf("Â¥ºÅ£º%s     Î´½ÉÇåÎïÒµ·ÑÈËÊı£º%d\n", array.data[i].building, count);
+        printf("æ¥¼å·ï¼š%s     æœªç¼´æ¸…ç‰©ä¸šè´¹äººæ•°ï¼š%d\n", array.data[i].building, count);
 
         k = i;
         for (j = i; j < array.size; j++) {
             if (array.data[j].payment > 0 && strcmp(array.data[j].building, array.data[i].building) == 0) {
 
-                printf("    »§Ö÷£º%-8s  µ¥ÔªºÅ£º%-5s  ·¿ºÅ£º%-5s  Î´½ÉÎïÒµ·Ñ£º%-8.2f  ±¸×¢ĞÅÏ¢£º%s\n",
+                printf("    æˆ·ä¸»ï¼š%-8s  å•å…ƒå·ï¼š%-5s  æˆ¿å·ï¼š%-5s  æœªç¼´ç‰©ä¸šè´¹ï¼š%-8.2f  å¤‡æ³¨ä¿¡æ¯ï¼š%s\n",
                        array.data[j].name, array.data[j].unit, array.data[j].room, array.data[j].payment,
                        array.data[j].remark);
                 k = j;
